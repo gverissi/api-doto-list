@@ -1,0 +1,19 @@
+{
+    "name": "vendor/api-email",
+    "description": "Persist email and send email",
+    "authors": [
+        {
+            "name": "greg",
+            "email": "greg.verissimo@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.0",
+        "phpmailer/phpmailer": "^6.1"
+    },
+	"autoload": {
+		"psr-4": {
+			"App\\": "App/"
+		}
+	}
+}
