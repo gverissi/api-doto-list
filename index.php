@@ -20,21 +20,21 @@ header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 
 $req_method = $_SERVER['REQUEST_METHOD'];
-$route = $_GET["route"];
+// $route = $_GET["route"];
 
 $controller = new MainController();
 
-if ($route === "myapi" && $req_method === "GET") {
+if ($req_method === "GET") {
 	$data = $controller->fetchAllToDos();
 	$json = json_encode($data);
 	echo $json;
 }
-else if ($route === "myapi" && $req_method === "POST") {
+else if ($req_method === "POST") {
 	$data = json_decode(file_get_contents("php://input"), true);
 	$todo = (string) $data['todo'];
     $controller->persistAToDo($todo);
 }
-else if ($route === "myapi" && $req_method === "DELETE") {
+else if ($req_method === "DELETE") {
 	$data = json_decode(file_get_contents("php://input"), true);
 	$todoId = (string) $data["todoId"];
 	$controller->deleteAToDo($todoId);
