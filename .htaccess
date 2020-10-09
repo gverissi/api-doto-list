@@ -1,3 +1,4 @@
 # RewriteEngine On
+# RewriteRule localhost\/([0-9]+)$ index.php?todoId=$1
 # RewriteRule ^myapi/$ index.php?route=myapi
 # RewriteRule ^myapi/([A-Za-z]+)/?$ index.php?route=$1

@@ -17,11 +17,11 @@ class MainController {
     }
 
     public function persistAToDo($todo) {
-		$this->database->persistAToDo($todo);
+		return $this->database->persistAToDo($todo);
     }
 
     public function deleteAToDo($todoId) {
-		$this->database->deleteAToDo($todoId);
+		return $this->database->deleteAToDo($todoId);
     }
 
 }

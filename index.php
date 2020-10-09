@@ -17,7 +17,9 @@ if (file_exists(__DIR__ . '/.env')) {
 
 header('Content-Type: application/json ; charset=utf-8');
 header('Access-Control-Allow-Origin: *');
-header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Methods: GET, POST, DELETE, OPTIONS");
+header("Access-Control-Allow-Headers: X-PINGOTHER, Content-Type");
+
 
 $req_method = $_SERVER['REQUEST_METHOD'];
 // $route = $_GET["route"];
@@ -31,11 +33,12 @@ if ($req_method === "GET") {
 }
 else if ($req_method === "POST") {
 	$data = json_decode(file_get_contents("php://input"), true);
-	$todo = (string) $data['todo'];
-    $controller->persistAToDo($todo);
+	$todo = (string) $data['action'];
+    $data = $controller->persistAToDo($todo);
+	echo json_encode($data);
 }
 else if ($req_method === "DELETE") {
-	$data = json_decode(file_get_contents("php://input"), true);
-	$todoId = (string) $data["todoId"];
-	$controller->deleteAToDo($todoId);
+	$todoId = (int) $_GET["todoId"];
+	$data = $controller->deleteAToDo($todoId);
+	echo json_encode($data);
 }

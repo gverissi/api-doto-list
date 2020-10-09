@@ -16,14 +16,14 @@ class Database extends DatabaseManager {
 	
     public function persistAToDo($todo) {
 		$req = $this->pdo->prepare("INSERT INTO todos (todo) VALUES (?)");
-		$affectedLine = $req->execute([$todo]);
-		return $affectedLine;
+		$isInserted = $req->execute([$todo]);
+		return $isInserted;
 	}
 	
     public function deleteAToDo($todoId) {
 		$req = $this->pdo->prepare("DELETE FROM todos WHERE id = (?)");
-		$affectedLine = $req->execute([$todoId]);
-		return $affectedLine;
+		$isDeleted = $req->execute([$todoId]);
+		return $isDeleted;
 	}
 	
 }
